@@ -7,27 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>{<!-- replace with the style name -->}</h1>
+    <h1><span th:text="${styleName}"></span></h1>
 
-        <a th:href="@{/view0}">
+        <a th:href="@{/beer}">
             <span>Back</span>
         </a>
-		<table border="1">
+		<table border="1" th:if="${beers.size()!=0}">
 			<thead>
                 
 				<tr>
-					<th>Style</th>
-					<th>Beer Count</th>
+					<th>Beer Name</th>
+					<th>Description</th>
+					<th>Brewery Name</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr data-th-each="s: ${styles}" data-th-object="${s}">
+				<tr data-th-each="b: ${beers}" data-th-object="${b}">
 					<td>
-						<span data-th-text="*{name}"></span> 
+						<span data-th-text="*{beerName}"></span> 
 					</td>
 					<td>
-						<a data-th-href="@{/beer/style/{id}?styleName={styleName}(id=*{styleId}, styleName=*{name})}">
-							<span data-th-text="*{beerCount}"></span>
+						<span data-th-text="*{beerDescription}"></span> 
+					</td>
+					<td>
+                        <!-- to edit the href later -->
+						<a data-th-href="@{/view3}">
+							<span data-th-text="*{breweryName}"></span>
 						</a>
 					</td>
 					<td>
@@ -36,5 +41,9 @@
 				</tr>
 			</tbody>
 		</table>
+
+    <div th:if="${beers.size()==0}">
+        <h2>No beers found for this style</h2>
+    </div>
 </body>
 </html>
