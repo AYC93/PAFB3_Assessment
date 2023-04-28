@@ -1,5 +1,7 @@
 package ibf2022.assessment.paf.batch3.models;
 
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+
 // DO NOT MODIFY THIS FILE.
 
 public class Style {
@@ -30,5 +32,14 @@ public class Style {
     @Override
     public String toString() {
         return "Style [styleId=" + styleId + ", name=" + name + ", beerCount=" + beerCount + "]";
+    }
+
+    //Task 2
+    public static Style createFromSQLRowSet(SqlRowSet rs){
+        Style s = new Style();
+        s.setBeerCount(rs.getInt("beer count"));
+        s.setName(rs.getString("style_name"));
+
+        return s;
     }
 }
