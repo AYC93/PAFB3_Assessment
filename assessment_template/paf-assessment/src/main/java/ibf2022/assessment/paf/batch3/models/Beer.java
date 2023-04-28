@@ -47,4 +47,14 @@ public class Beer {
 		return "Beer [beerId=" + beerId + ", beerName=" + beerName + ", beerDescription=" + beerDescription
 				+ ", breweryId=" + breweryId + ", breweryName=" + breweryName + "]";
 	}
+
+	// beerId, beerName, beerDescription, breweryId, breweryName
+	// task 3
+	public static Style createFromSQLRowSet(SqlRowSet rs){
+        Style s = new Style();
+        s.setBeerCount(rs.getInt("beer count"));
+        s.setName(rs.getString("style_name"));
+
+        return s;
+    }
 }

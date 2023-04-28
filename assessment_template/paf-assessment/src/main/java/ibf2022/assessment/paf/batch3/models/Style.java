@@ -39,6 +39,7 @@ public class Style {
         Style s = new Style();
         s.setBeerCount(rs.getInt("beer count"));
         s.setName(rs.getString("style_name"));
+        s.setStyleId(rs.getInt("id"));
 
         return s;
     }

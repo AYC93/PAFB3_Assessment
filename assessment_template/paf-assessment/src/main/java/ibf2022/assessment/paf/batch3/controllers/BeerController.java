@@ -19,9 +19,8 @@ public class BeerController {
 	@Autowired
 	BeerService beerSvc;
 
-	@GetMapping(path="/allbeerstyle")
+	@GetMapping(path="/view0")
 	public String populateAllBeerStyle(Model m, HttpSession sess){
-		sess.invalidate();
 		List<Style> styles = beerSvc.getStyles();
 		m.addAttribute("styles", styles);
 		return "view0";
