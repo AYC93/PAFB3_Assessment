@@ -1,6 +1,8 @@
 package ibf2022.assessment.paf.batch3.controllers;
 
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import ibf2022.assessment.paf.batch3.models.Beer;
+import ibf2022.assessment.paf.batch3.models.Brewery;
 import ibf2022.assessment.paf.batch3.models.Style;
 import ibf2022.assessment.paf.batch3.repositories.BeerRepository;
 import ibf2022.assessment.paf.batch3.services.BeerService;
@@ -35,6 +38,7 @@ public class BeerController {
 		return "view0";
 	}
 	
+	//TODO Task 3 - view 1
 	@GetMapping(path="/style/{id}")
 	public String populateStyleIdWBeerAndBreweries(Model m, HttpSession sess, @PathVariable int id){
 		List<Style> styles = beerRepo.getStyles();
@@ -53,12 +57,34 @@ public class BeerController {
 
 		return "view1";
 	}
-	//TODO Task 3 - view 1
 	
 
 	//TODO Task 4 - view 2
+	@GetMapping(path="/style/brewery/{breweryId}")
+	public String populateBeerBreweryOrderForm(Model m, HttpSession sess, @PathVariable int breweryId){
+		try{
+		Optional<Brewery> br = beerRepo.getBeersFromBrewery(breweryId);
+		List<Beer> beers = br.get().getBeers();
+		m.addAttribute("br", br.get());
+		m.addAttribute("beers", beers);
+		System.out.println(">>>>" + beers);
 
-	
+		String breweryName = null;
+		for (Beer beer : beers) {
+			if (beer.getBreweryId() == breweryId) {
+				breweryName = beer.getBreweryName();
+				break;
+			}
+		}
+		m.addAttribute("breweryName", br.get().getName());
+		sess.setAttribute("br", br);
+
+		return "view2";
+		}catch(NoSuchElementException ex){
+			return "errorbrewery";
+		}
+
+	}
 	//TODO Task 5 - view 2, place order
 
 }

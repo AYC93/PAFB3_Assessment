@@ -56,8 +56,8 @@ public class Beer {
         Beer b = new Beer();
         b.setBeerId(rs.getInt("beer_id"));
         b.setBeerName(rs.getString("Beer Name"));
-        b.setBeerDescription(rs.getString("description"));
-        b.setBreweryId(rs.getInt("brewery_id"));
+        b.setBeerDescription(rs.getString("beerDescription"));
+        b.setBreweryId(rs.getInt("breweryId"));
         b.setBreweryName(rs.getString("Brewery Name"));
 
         return b;

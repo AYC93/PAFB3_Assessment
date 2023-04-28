@@ -10,13 +10,26 @@ public class DBQueries {
                                                     ORDER BY COUNT(*) DESC, s.style_name ASC;
                                                 """;
     
-    public static final String BREWERIES_BY_BEER="""
+    public static final String BREWERIES_BY_BEER= """
                                                     SELECT b.id AS beer_id, b.name AS \"Beer Name\", 
-                                                    b.descript AS description, br.id AS brewery_id, 
+                                                    b.descript AS beerDescription, br.id AS breweryId, 
                                                     br.name AS \"Brewery Name\" FROM beers b 
                                                     JOIN breweries br ON b.brewery_id = br.id
                                                     JOIN styles s ON b.style_id = s.id
                                                     WHERE b.style_id = ?
                                                     ORDER BY b.name ASC;
                                                 """;
+        
+        public static final String BREWERIES="""
+                                                SELECT b.id AS beer_id, b.name AS \"Beer Name\", b.descript AS beerDescription, 
+                                                b.brewery_id AS breweryId, br.name AS \"Brewery Name\", br.address1, br.address2, 
+                                                br.city, br.phone, br.website, br.descript AS breweryDescription 
+                                                FROM beers b 
+                                                JOIN breweries br ON b.brewery_id = br.id                                               
+                                                WHERE br.id = ?
+                                                ORDER BY b.name ASC;
+                                             """;
+
+        // 	beerId, beerName, beerDescription, breweryId, breweryName
+ 
 }
