@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -101,5 +102,7 @@ public class Brewery {
 		br.setDescription(rs.getString("breweryDescription"));
 		return br;
 	}
+
+	
 
 }

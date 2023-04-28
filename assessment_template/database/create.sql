@@ -9,5 +9,6 @@ exit
 mysql -hcontainers-us-west-26.railway.app -uroot -pgVDZMqxqVi49mCLM9lbP --port 7327 --protocol=TCP railway < beers.sql
 mysql -hcontainers-us-west-26.railway.app -uroot -pgVDZMqxqVi49mCLM9lbP --port 7327 --protocol=TCP railway < breweries.sql
 mysql -hcontainers-us-west-26.railway.app -uroot -pgVDZMqxqVi49mCLM9lbP --port 7327 --protocol=TCP railway < categories.sql
+mysql -hcontainers-us-west-26.railway.app -uroot -pgVDZMqxqVi49mCLM9lbP --port 7327 --protocol=TCP railway < create.sql
 mysql -hcontainers-us-west-26.railway.app -uroot -pgVDZMqxqVi49mCLM9lbP --port 7327 --protocol=TCP railway < geocodes.sql
 mysql -hcontainers-us-west-26.railway.app -uroot -pgVDZMqxqVi49mCLM9lbP --port 7327 --protocol=TCP railway < styles.sql
